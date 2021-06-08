@@ -22,3 +22,15 @@ after_success:
   - docker push hoanlezuhlke/multi-d1-nginx
   - docker push hoanlezuhlke/multi-d1-server
   - docker push hoanlezuhlke/multi-d1-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-d1
+  env: Multid1-env
+  bucket_name: elasticbeanstalk-us-east-2-570317453708
+  bucket_path: multi-d1
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
